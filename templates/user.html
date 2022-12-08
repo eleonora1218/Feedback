@@ -1,0 +1,54 @@
+{% extends 'base.html'  %}
+{% block title %} {{ user.username }} {% endblock %}}
+
+{% block content %}
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Five-pointed_star.svg" alt="">
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Five-pointed_star.svg" alt="">
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Five-pointed_star.svg" alt="">
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Five-pointed_star.svg" alt="">
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Five-pointed_star.svg" alt="">
+<h1>Welcome {{user.full_name}} to your page</h1>
+
+
+
+<form>
+    <button
+        formaction="/users/{{user.username}}/delete"
+        formmethod="POST">
+    Delete profile
+    </button>
+</form>
+
+<br>
+<a href="/users/{{user.username}}/feedback/add">Provide feedback</a>
+
+{% if user.feedback %}
+<h4>Previous feedback:</h4>
+    {% for fb in user.feedback %}
+        <ul>
+            <li>
+                {{fb.title}}
+                <br>
+                {{fb.content}}
+                
+                <form>
+                    <button
+                        formaction="/feedback/{{fb.id}}/update"
+                        formmethod="POST">
+                    Edit feedback</button>
+                </form>
+
+                <form method="POST">
+                    <button
+                        formaction="/feedback/{{fb.id}}/delete"
+                        formmethod="POST">
+                    Delete feedback
+                </button>
+                </form>
+            </li>
+        </ul>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

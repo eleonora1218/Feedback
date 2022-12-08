@@ -1,0 +1,21 @@
+/* base.html */
+
+nav {
+    background-color: darkolivegreen;
+    padding: 10px;
+}
+.nav-item {
+    color: white;
+    font-size: 20px;
+    padding-right: 15px;
+}
+.nav-item:hover {
+    color: rgb(232, 120, 120);
+    text-decoration: none;
+}
+
+/* user.html */
+
+img {
+    width: 125px;
+}
